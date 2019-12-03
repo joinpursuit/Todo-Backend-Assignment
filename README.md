@@ -43,7 +43,7 @@ You will use express, nodeJS and postgreSQL to build this.
 The format for all responses should be a JSON object with three properties status, message and payload.
 
 A successful request should be answered with the following JSON:
-
+```json
 {
     "status": "success",                      
     "message": "retrieved single researcher", 
@@ -53,17 +53,22 @@ A successful request should be answered with the following JSON:
         "job_title": "Lab Researcher"
     }
 }
+```
 
 For a failed request the JSON sent should be something like:
 
+```json
 {
     "status": "error",
     "message": "researcher not found",
     "payload": null
 }
-Notes
-payload. Your response from SQL (the actual data)
-message. Either "got all users" or an error message
-status. Either "success" or "error"
-payload. If a single row is retrieved from the database, like when retrieving a single researcher payload should contain a single object. When retrieving a multiple rows like when getting all researchers payload should contain an array. The rule of thumb is if single => object, list => array
-If possible, when deleting, inserting and updating rows in the database return the affected row/data in the payload property of the response. (optional)
+
+```
+**Notes**
+
+* `payload`. Your response from SQL (the actual data)
+* `message`. Either "got all users" or an error message
+* `status`. Either "success" or "error"
+* `payload`. If a single row is retrieved from the database, like when retrieving a single researcher payload should contain a single `object`. When retrieving a multiple rows like when getting all researchers payload should contain an `array`. The rule of thumb is if single => `object`, list => `array`
+* If possible, when deleting, inserting and updating rows in the database return the affected row/data in the payload property of the response. (optional)
