@@ -21,19 +21,19 @@ You will use express, nodeJS and postgreSQL to build this.
 # Endpoints
 
 #### Users
-| Method | Endpoint                 | 
-|--------|--------------------------|
-| `GET`  | `/users`                 |
-| `GET`  | `/users/<user-username>` |
-| `POST` | `/users/signup`          |
+| Method | Endpoint                 | Action         |
+|--------|--------------------------|----------------|
+| `GET`  | `/users`                 |Get All users   |
+| `GET`  | `/users/<user-username>` |Get one user    |
+| `POST` | `/users/signup`          |Register a user |
 
 #### Todos
-| Method   | Endpoint           | 
-|----------|--------------------|
-| `GET`    | `/todos`           | 
-| `POST`   | `/todos`           |
-| `GET`    | `/todos/<todo-id>` |
-| `PUT`    | `/todos/<todo-id>` |
-| `PATCH`  | `/todos/<todo-id>` |
-| `DELETE` | `/todos/<todo-id>` |
+| Method   | Endpoint                | Action                        |
+|----------|-------------------------|-------------------------------|
+| `GET`    | `/todos`                | Get all todos                 |
+| `GET`    | `/todos/<user-username>`| Get all todos from a user     |
+| `POST`   | `/todos`                | Create a todo                 | 
+| `GET`    | `/todos/<todo-id>`      | Get one todo                  |
+| `PATCH`  | `/todos/<todo-id>`      | Update a todo                 |
+| `DELETE` | `/todos/<todo-id>`      | Delete a todo                 |
 
