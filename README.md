@@ -1,56 +1,86 @@
-# Todo-Backend-Assignment
+# Todos App Backend Assignment
 
-This Server/API is intended to be used by the fellows to practice making network requests, learn about HTTP status codes, their uses and differences, learn about query parameters and body data sent to appropriate endpoints.
+This assignment is intended to be used by fellows to learn how to and practice making a backend server with Node.js Express.js & PostgreSQL. In the process the fellow will acquire knowledge about network requests, HTTP status codes, their uses and differences, learn about query parameters and body data sent to appropriate endpoints.
 
-You will use express, nodeJS and postgreSQL to build this.
+## Connected Lessons
+Curriculum lessons that directly relate to this assignment can be found on the [Pursuit-Web-Core repo Unit 3 section](https://github.com/joinpursuit/Pursuit-Core-Web/blob/master/node/README.md)
 
-# Dependencies 
+## Dependencies 
 - `node`
+- `express`
+- `pg-promise`
 - `npm`
 - PostgreSQL / `psql`
 - Postman
 
-# Project MVP Goals
-    This app should be able to:
-        - Register a user with an username and password
-        - Allow user to create todo (with a timestamp of when it was created)
-        - Allow user to update a todo 
-        - Allow user to see one specfic todo
-        - Allow user to delete a todo
+## Project MVP Goals
+
+Your assignment is to build a Backend Server that lets a client accomplish the following tasks.
+
+- Register a user with a username and email
+- Create a todo 
+- Update a todo 
+- Get one specific todo by id
+- Delete a todo
     
-# Endpoints
+To achieve the above functionality implement the following endpoints.
+
+### Endpoints
 
 #### Users
-| Method | Endpoint                 | Action         |
-|--------|--------------------------|----------------|
-| `GET`  | `/users`                 |Get All users   |
-| `GET`  | `/users/<user-username>` |Get one user    |
-| `POST` | `/users/signup`          |Register a user |
+| Method | Endpoint            | Action          |
+| ------ | ------------------- | --------------- |
+| `GET`  | `/users`            | Get All users   |
+| `GET`  | `/users/<username>` | Get one user    |
+| `POST` | `/users/signup`     | Register a user |
 
 #### Todos
-| Method   | Endpoint                | Action                        |
-|----------|-------------------------|-------------------------------|
-| `GET`    | `/todos`                | Get all todos                 |
-| `GET`    | `/todos/<user-username>`| Get all todos from a user     |
-| `GET`    | `/todos/<todo-id>`      | Get one todo                  |
-| `POST`   | `/todos`                | Create a todo                 | 
-| `PATCH`  | `/todos/<todo-id>`      | Update a todo                 |
-| `DELETE` | `/todos/<todo-id>`      | Delete a todo                 |
+| Method   | Endpoint            | Action                    |
+| -------- | ------------------- | ------------------------- |
+| `GET`    | `/todos`            | Get all todos             |
+| `GET`    | `/todos/<username>` | Get all todos from a user |
+| `GET`    | `/todos/<todo-id>`  | Get one todo              |
+| `POST`   | `/todos`            | Create a todo             |
+| `PATCH`  | `/todos/<todo-id>`  | Update a todo             |
+| `DELETE` | `/todos/<todo-id>`  | Delete a todo             |
 
 
-# Responses Format
+### Data Model
+
+This is what a user and a todo should look like in your system
+
+#### User
+```json
+{
+    "id": 1,
+    "username": "Alex123",
+    "email": "alex.bravo@gmail.com"
+}
+```
+
+#### Todo
+```json
+{
+    "id": 2,
+    "owner": "Alex123",
+    "text": "Walk my Dog",
+    "completed": false
+}
+```
+
+### Responses Format
 
 The format for all responses should be a JSON object with three properties status, message and payload.
-
 A successful request should be answered with the following JSON:
+
 ```json
 {
     "status": "success",                      
-    "message": "retrieved single researcher", 
+    "message": "retrieved user by username", 
     "payload": {                              
         "id": 11,
-        "name": "Jen Simmons",
-        "job_title": "Lab Researcher"
+        "username": "JenSimmons",
+        "email": "jenny123@hotmail.com"
     }
 }
 ```
@@ -60,15 +90,15 @@ For a failed request the JSON sent should be something like:
 ```json
 {
     "status": "error",
-    "message": "researcher not found",
+    "message": "todo not found",
     "payload": null
 }
 
 ```
+
 **Notes**
 
-* `payload`. Your response from SQL (the actual data)
+* `payload`. Your response from SQL (the actual data). Either a single todo or a user. Or an array of todos or users objects.
 * `message`. Either "got all users" or an error message
 * `status`. Either "success" or "error"
-* `payload`. If a single row is retrieved from the database, like when retrieving a single researcher payload should contain a single `object`. When retrieving a multiple rows like when getting all researchers payload should contain an `array`. The rule of thumb is if single => `object`, list => `array`
-* If possible, when deleting, inserting and updating rows in the database return the affected row/data in the payload property of the response. (optional)
+* If possible, when deleting, inserting and updating rows in the database return the updated row/data in the payload property of the response. (optional)
