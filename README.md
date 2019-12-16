@@ -1,6 +1,6 @@
 # Todos App Backend Assignment
 
-This assignment is intended to be used by fellows to learn how to and practice making a backend server with Node.js Express.js & PostgreSQL. In the process the fellow will acquire knowledge about network requests, HTTP status codes, their uses and differences, learn about query parameters and body data sent to appropriate endpoints.
+This assignment is intended to be used by fellows to practice making a backend server with Node.js Express.js & PostgreSQL. In the process the fellow will acquire knowledge about back-end endpoints and how to handle network requests, HTTP status codes, their uses and differences, learn about query parameters and body data sent to appropriate endpoints.
 
 ## Connected Lessons
 Curriculum lessons that directly relate to this assignment can be found on the [Pursuit-Web-Core repo Unit 3 section](https://github.com/joinpursuit/Pursuit-Core-Web/blob/master/node/README.md)
@@ -19,7 +19,7 @@ Your assignment is to build a Backend Server that lets a client accomplish the f
 
 - Register a user with a username and email
 - Create a todo 
-- Update a todo 
+- Update a todo: Change the todo text or mark it as completed
 - Get one specific todo by id
 - Delete a todo
     
@@ -28,11 +28,11 @@ To achieve the above functionality implement the following endpoints.
 ### Endpoints
 
 #### Users
-| Method | Endpoint            | Action          |
-| ------ | ------------------- | --------------- |
-| `GET`  | `/users`            | Get All users   |
-| `GET`  | `/users/<username>` | Get one user    |
-| `POST` | `/users/signup`     | Register a user |
+| Method | Endpoint            | Action                   |
+| ------ | ------------------- | ------------------------ |
+| `GET`  | `/users`            | Get All users            |
+| `GET`  | `/users/<username>` | Get one user by username |
+| `POST` | `/users/signup`     | Register/add a user      |
 
 #### Todos
 | Method   | Endpoint            | Action                    |
